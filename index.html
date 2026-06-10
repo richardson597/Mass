@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Messages</title>
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#fff;max-width:430px;margin:0 auto;overflow-x:hidden;}
+/* Display */
+.flex{display:flex;}.block{display:block;}.hidden{display:none!important;}.grid{display:grid;}
+/* Position */
+.fixed{position:fixed;}.absolute{position:absolute;}.relative{position:relative;}.sticky{position:sticky;}
+/* Flex */
+.flex-1{flex:1 1 0%;}.flex-col{flex-direction:column;}.flex-shrink-0{flex-shrink:0;}
+.items-center{align-items:center;}.items-baseline{align-items:baseline;}.items-end{align-items:flex-end;}
+.justify-between{justify-content:space-between;}.justify-around{justify-content:space-around;}
+.justify-center{justify-content:center;}.justify-end{justify-content:flex-end;}
+/* Overflow */
+.overflow-hidden{overflow:hidden;}.overflow-y-auto{overflow-y:auto;}.overflow-x-auto{overflow-x:auto;}
+/* Z-index */
+.z-20{z-index:20;}.z-30{z-index:30;}.z-40{z-index:40;}.z-50{z-index:50;}
+/* Position values */
+.top-0{top:0;}.top-0\.5{top:2px;}.top-2{top:8px;}
+.bottom-0{bottom:0;}.bottom-20{bottom:80px;}
+.left-0\.5{left:2px;}.left-1\/2{left:50%;}
+.right-0\.5{right:2px;}.right-4{right:16px;}.right-5{right:20px;}
+.inset-0{top:0;right:0;bottom:0;left:0;}
+/* Transform */
+.-translate-x-1\/2{transform:translateX(-50%);}
+/* Width */
+.w-5{width:20px;}.w-8{width:32px;}.w-9{width:36px;}.w-10{width:40px;}.w-11{width:44px;}
+.w-12{width:48px;}.w-14{width:56px;}.w-72{width:288px;}.w-80{width:320px;}.w-full{width:100%;}
+/* Height */
+.h-5{height:20px;}.h-6{height:24px;}.h-8{height:32px;}.h-9{height:36px;}.h-10{height:40px;}
+.h-12{height:48px;}.h-14{height:56px;}
+/* Min/Max */
+.min-w-0{min-width:0;}.min-w-\[44px\]{min-width:44px;}.min-w-\[80px\]{min-width:80px;}
+.min-h-\[44px\]{min-height:44px;}.min-h-\[52px\]{min-height:52px;}
+.min-h-\[60px\]{min-height:60px;}.min-h-\[72px\]{min-height:72px;}
+.max-w-\[75\%\]{max-width:75%;}.max-w-\[180px\]{max-width:180px;}
+.max-w-\[210px\]{max-width:210px;}.max-w-\[430px\]{max-width:430px;}
+.max-h-40{max-height:160px;}
+/* Padding */
+.p-4{padding:16px;}
+.px-1{padding-left:4px;padding-right:4px;}.px-2{padding-left:8px;padding-right:8px;}
+.px-3{padding-left:12px;padding-right:12px;}.px-4{padding-left:16px;padding-right:16px;}
+.px-5{padding-left:20px;padding-right:20px;}.px-6{padding-left:24px;padding-right:24px;}
+.py-1{padding-top:4px;padding-bottom:4px;}.py-1\.5{padding-top:6px;padding-bottom:6px;}
+.py-2{padding-top:8px;padding-bottom:8px;}.py-2\.5{padding-top:10px;padding-bottom:10px;}
+.py-3{padding-top:12px;padding-bottom:12px;}.py-4{padding-top:16px;padding-bottom:16px;}
+.py-8{padding-top:32px;padding-bottom:32px;}
+.pt-2{padding-top:8px;}.pt-3{padding-top:12px;}.pt-4{padding-top:16px;}
+.pt-5{padding-top:20px;}.pt-6{padding-top:24px;}
+.pb-1{padding-bottom:4px;}.pb-2{padding-bottom:8px;}.pb-3{padding-bottom:12px;}
+.pb-5{padding-bottom:20px;}
+/* Margin */
+.mt-0\.5{margin-top:2px;}.mt-1{margin-top:4px;}.mt-2{margin-top:8px;}.mt-3{margin-top:12px;}
+.mb-1{margin-bottom:4px;}.mb-2{margin-bottom:8px;}.mb-3{margin-bottom:12px;}
+.mb-4{margin-bottom:16px;}.mb-5{margin-bottom:20px;}.mb-6{margin-bottom:24px;}
+.ml-1{margin-left:4px;}.ml-2{margin-left:8px;}.ml-3{margin-left:12px;}
+.mr-2{margin-right:8px;}.mr-3{margin-right:12px;}
+/* Gap */
+.gap-1{gap:4px;}.gap-2{gap:8px;}.gap-3{gap:12px;}.gap-4{gap:16px;}
+/* Backgrounds */
+.bg-white{background-color:#ffffff;}.bg-gray-50{background-color:#f9fafb;}
+.bg-gray-100{background-color:#f3f4f6;}.bg-transparent{background-color:transparent;}
+/* Text color */
+.text-black{color:#000000;}.text-white{color:#ffffff;}
+.text-gray-400{color:#9ca3af;}.text-gray-500{color:#6b7280;}
+.text-gray-600{color:#4b5563;}.text-blue-500{color:#3b82f6;}
+/* Font weight */
+.font-normal{font-weight:400;}.font-medium{font-weight:500;}
+.font-semibold{font-weight:600;}.font-bold{font-weight:700;}
+/* Font size */
+.text-xs{font-size:12px;line-height:16px;}.text-sm{font-size:14px;line-height:20px;}
+.text-base{font-size:16px;line-height:24px;}.text-lg{font-size:18px;line-height:28px;}
+.text-xl{font-size:20px;line-height:28px;}.text-2xl{font-size:24px;line-height:32px;}
+.text-4xl{font-size:36px;line-height:40px;}.text-\[15px\]{font-size:15px;}
+/* Text align */
+.text-left{text-align:left;}.text-center{text-align:center;}
+/* Line height */
+.leading-none{line-height:1;}.leading-tight{line-height:1.25;}.leading-relaxed{line-height:1.625;}
+/* Letter spacing */
+.tracking-wide{letter-spacing:0.025em;}
+/* Text transform */
+.uppercase{text-transform:uppercase;}
+/* Text overflow */
+.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.whitespace-nowrap{white-space:nowrap;}
+/* User select */
+.select-none{user-select:none;-webkit-user-select:none;}
+/* Borders */
+.border{border-width:1px;border-style:solid;}
+.border-b{border-bottom-width:1px;border-bottom-style:solid;}
+.border-t{border-top-width:1px;border-top-style:solid;}
+.border-b-2{border-bottom-width:2px;border-bottom-style:solid;}
+.border-gray-50{border-color:#f9fafb;}.border-gray-100{border-color:#f3f4f6;}
+.border-gray-200{border-color:#e5e7eb;}.border-gray-300{border-color:#d1d5db;}
+.border-blue-500{border-color:#3b82f6;}
+/* Border radius */
+.rounded-lg{border-radius:8px;}.rounded-xl{border-radius:12px;}
+.rounded-2xl{border-radius:16px;}.rounded-full{border-radius:9999px;}
+/* Shadows */
+.shadow{box-shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);}
+.shadow-sm{box-shadow:0 1px 2px rgba(0,0,0,.05);}
+.shadow-2xl{box-shadow:0 25px 50px rgba(0,0,0,.25);}
+/* Cursor */
+.cursor-pointer{cursor:pointer;}
+/* Placeholder */
+.placeholder-gray-400::placeholder{color:#9ca3af;}
+/* Focus */
+.focus\:outline-none:focus{outline:none;}
+/* Transitions */
+.transition-colors{transition:color .15s,background-color .15s,border-color .15s;}
+.transition-transform{transition:transform .15s;}
+/* Hover */
+.hover\:bg-gray-50:hover{background-color:#f9fafb;}
+/* Active */
+.active\:bg-gray-50:active{background-color:#f9fafb;}
+.active\:bg-gray-100:active{background-color:#f3f4f6;}
+.active\:opacity-60:active{opacity:.6;}
+.active\:scale-110:active{transform:scale(1.1);}
+
+</style>
+<style>
+    * { font-family: 'Roboto', sans-serif; box-sizing: border-box; }
+    body { background: #fff; max-width: 430px; margin: 0 auto; overflow-x: hidden; }
+    ::-webkit-scrollbar { display: none; }
+    .chat-messages { height: calc(100dvh - 132px); overflow-y: auto; padding: 12px 0; }
+    .msg-bubble { user-select: none; -webkit-user-select: none; }
+    .suggestion-bar { display: none; }
+    .suggestion-bar.visible { display: flex; }
+    .tab-active { border: 1.5px solid #ccc; border-radius: 9999px; padding: 6px 32px; color: #000; font-weight: 500; }
+    .tab-inactive { padding: 6px 16px; color: #999; font-weight: 400; }
+    .fab { box-shadow: 0 4px 12px rgba(33,150,243,0.45); }
+    .status-bar-icon { display: inline-block; }
+    .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 50; display: none; align-items: center; justify-content: center; }
+    .overlay.show { display: flex; }
+    .color-dot { width: 36px; height: 36px; border-radius: 50%; cursor: pointer; transition: transform 0.15s; }
+    .color-dot:active { transform: scale(1.2); }
+    .kebab-menu { display: none; position: absolute; right: 12px; top: 48px; background: white; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.18); z-index: 40; min-width: 180px; overflow: hidden; }
+    .kebab-menu.show { display: block; }
+    .dot-indicator { width: 8px; height: 8px; border-radius: 50%; background: #FF6D00; position: absolute; top: 0; right: 0; }
+    input:focus { outline: none; }
+    .screen { width: 100%; min-height: 100dvh; background: #fff; }
+    #screen-list { display: block; }
+    #screen-chat { display: none; }
+    .bottom-nav-line { height: 2.5px; background: #2196F3; border-radius: 2px; position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); width: 48px; }
+    /* dotted underline for active nav */
+    .nav-active-dot { border-bottom: 2px dotted #2196F3; }
+  </style>
+</head>
+<body class="bg-white">
+
+<!-- ═══════════════════════════════════════ SCREEN 1: LIST ═══════════════════════════════════════ -->
+<div id="screen-list" class="screen">
+
+
+
+  <!-- Header -->
+  <div class="relative px-4 pt-3 pb-1">
+    <div class="flex justify-end gap-1 absolute right-3 top-3 items-center">
+      <!-- Search icon -->
+      <button class="w-10 h-10 flex items-center justify-center active:bg-gray-100 rounded-full" onclick="toggleSearch()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+      <!-- 3-dots with orange N badge -->
+      <div class="relative w-10 h-10 flex items-center justify-center active:bg-gray-100 rounded-full cursor-pointer" onclick="toggleKebab('kebab-list')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#000">
+          <circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/>
+        </svg>
+        <span style="position:absolute;top:4px;right:4px;min-width:16px;height:16px;background:#FF6D00;border-radius:8px;font-size:10px;font-weight:700;color:white;display:flex;align-items:center;justify-content:center;padding:0 3px;line-height:1;">N</span>
+      </div>
+    </div>
+    <h1 class="text-4xl font-normal text-black text-center mt-1">Messages</h1>
+    <p class="text-sm text-gray-500 text-center mt-0.5 mb-3">No unread messages</p>
+    <!-- Search Bar (hidden by default) -->
+    <div id="search-bar" class="hidden mb-2">
+      <div class="flex items-center bg-gray-100 rounded-xl px-3 py-2 gap-2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" placeholder="Search" class="flex-1 bg-transparent text-sm text-black placeholder-gray-400 focus:outline-none" oninput="filterConversations(this.value)" />
+        <button onclick="clearSearch()" class="text-gray-400 text-lg leading-none">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kebab menu (list screen) -->
+  <div id="kebab-list" class="kebab-menu" style="top:64px;">
+    <button class="w-full text-left px-5 py-3 text-sm text-black hover:bg-gray-50 active:bg-gray-100" onclick="openNewConversation(); closeAllKebabs()">New conversation</button>
+    <button class="w-full text-left px-5 py-3 text-sm text-black hover:bg-gray-50 active:bg-gray-100" onclick="markAllRead(); closeAllKebabs()">Mark all as read</button>
+    <button class="w-full text-left px-5 py-3 text-sm text-black hover:bg-gray-50 active:bg-gray-100" onclick="deleteAllConversations(); closeAllKebabs()">Delete conversations</button>
+    <button class="w-full text-left px-5 py-3 text-sm text-black hover:bg-gray-50 active:bg-gray-100" onclick="openSettings(); closeAllKebabs()">Settings</button>
+  </div>
+
+  <!-- Tabs -->
+  <div class="flex items-center gap-3 px-5 pb-2 mt-1">
+    <button style="border:1.5px solid #ccc;border-radius:9999px;padding:6px 28px;font-size:14px;font-weight:500;color:#000;background:white;">All</button>
+    <button style="font-size:14px;color:#999;font-weight:400;background:none;border:none;padding:6px 4px;">New category</button>
+  </div>
+
+  <!-- Conversation List -->
+  <div id="conversation-list" class="overflow-y-auto" style="height: calc(100dvh - 230px);">
+    <!-- Populated by JS -->
+  </div>
+
+  <!-- Bottom Nav -->
+  <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white border-t border-gray-100 flex items-center justify-around py-3 z-30">
+    <div id="nav-conversations" class="flex flex-col items-center gap-1 cursor-pointer min-w-[80px] items-center" onclick="switchTab('conversations')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#2196F3"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+      <span class="text-xs font-medium nav-active-dot" style="color:#2196F3;">Conversations</span>
+    </div>
+    <div id="nav-contacts" class="flex flex-col items-center gap-1 cursor-pointer min-w-[80px] items-center" onclick="switchTab('contacts')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#666"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+      <span class="text-xs text-gray-500">Contacts</span>
+    </div>
+  </div>
+
+  <!-- FAB -->
+  <button class="fab fixed bottom-20 right-5 w-14 h-14 rounded-full flex items-center justify-center z-30" style="background:#2196F3;" onclick="openNewConversation()">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+  </button>
+
+</div><!-- /screen-list -->
+
+<!-- ═══════════════════════════════════════ SCREEN 2: CHAT ═══════════════════════════════════════ -->
+<div id="screen-chat" class="screen" style="display:none;">
+
+  <!-- Top Bar -->
+  <div class="flex items-center px-3 pt-4 pb-3 border-b border-gray-100 sticky top-0 bg-white z-20">
+    <button class="text-2xl text-black mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center" onclick="showList()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    </button>
+    <div id="chat-avatar-top" class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white mr-2 flex-shrink-0 cursor-pointer select-none"
+      ontouchstart="startAvatarLongPress(event)"
+      ontouchend="cancelAvatarLongPress()"
+      ontouchmove="cancelAvatarLongPress()"
+      oncontextmenu="showColorPicker(event); return false;"
+      onclick="cancelAvatarLongPress()"></div>
+    <div class="flex-1 min-w-0">
+      <div id="chat-name-top" class="font-semibold text-black text-base leading-tight truncate cursor-pointer active:opacity-60" onclick="editContactName()"></div>
+      <div id="chat-status-top" class="text-xs text-gray-500"></div>
+    </div>
+    <div class="flex items-center gap-2 ml-2">
+      <button class="text-xl text-black min-w-[44px] min-h-[44px] flex items-center justify-center">🔍</button>
+      <div class="relative" onclick="toggleKebab('kebab-chat')">
+        <button class="text-xl font-bold text-black leading-none min-w-[44px] min-h-[44px] flex items-center justify-center">⋮</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kebab menu (chat screen) -->
+  <div id="kebab-chat" class="kebab-menu" style="top:64px;">
+    <button class="w-full text-left px-5 py-3 text-sm text-black hover:bg-gray-50 active:bg-gray-100" onclick="toggleInputBar(true); closeAllKebabs()">View contact</button>
+    <button class="w-full text-left px-5 py-3 text-sm text-black hover:bg-gray-50 active:bg-gray-100" onclick="openSchedulePopup(); closeAllKebabs()">Schedule message</button>
+    <button class="w-full text-left px-5 py-3 text-sm text-black hover:bg-gray-50 active:bg-gray-100" onclick="markCurrentAsUnread(); closeAllKebabs()">Mark as unread</button>
+    <button class="w-full text-left px-5 py-3 text-sm text-black hover:bg-gray-50 active:bg-gray-100" onclick="editContactName(); closeAllKebabs()">Edit name</button>
+    <button class="w-full text-left px-5 py-3 text-sm text-black hover:bg-gray-50 active:bg-gray-100" onclick="showColorPicker(event); closeAllKebabs()">Change icon colour</button>
+    <button class="w-full text-left px-5 py-3 text-sm hover:bg-gray-50 active:bg-gray-100" style="color:#D32F2F;" onclick="deleteCurrentChat(); closeAllKebabs()">Delete conversation</button>
+  </div>
+
+  <!-- Messages -->
+  <div id="chat-messages" class="chat-messages px-3"></div>
+
+  <!-- Suggestion Bar -->
+  <div id="suggestion-bar" class="suggestion-bar items-center gap-2 px-4 py-2 bg-gray-50 border-t border-gray-200 overflow-x-auto">
+    <span class="text-sm text-gray-600 whitespace-nowrap px-3 py-1 bg-white rounded-full border border-gray-200 shadow-sm cursor-pointer" onclick="insertSuggestion('hellooo')">hellooo</span>
+    <span class="text-sm text-gray-600 whitespace-nowrap px-3 py-1 bg-white rounded-full border border-gray-200 shadow-sm cursor-pointer" onclick="insertSuggestion('helloo')">helloo</span>
+    <span class="text-sm text-gray-600 whitespace-nowrap px-3 py-1 bg-white rounded-full border border-gray-200 shadow-sm cursor-pointer" onclick="insertSuggestion('👋')">👋</span>
+    <span class="text-sm text-gray-600 whitespace-nowrap px-3 py-1 bg-white rounded-full border border-gray-200 shadow-sm cursor-pointer" onclick="insertSuggestion('Hello!')">Hello!</span>
+    <span class="text-sm text-gray-600 whitespace-nowrap px-3 py-1 bg-white rounded-full border border-gray-200 shadow-sm cursor-pointer" onclick="insertSuggestion('Sure!')">Sure!</span>
+  </div>
+
+  <!-- Input Area -->
+  <div id="chat-input-bar" class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white border-t border-gray-200 flex items-center px-3 py-2 z-20 gap-2"
+    style="transform: translateX(-50%) translateY(100%); transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);">
+    <button class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center" style="background:#424242;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+    </button>
+    <input id="message-input" type="text" placeholder="SMS Message"
+      class="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm text-black bg-white"
+      oninput="onInputChange(this)"
+      onkeydown="if(event.key==='Enter') sendMessage()" />
+    <div class="flex flex-col items-center flex-shrink-0">
+      <button id="send-btn" onclick="sendMessage()"
+        ontouchstart="startSendLongPress(event)"
+        ontouchend="cancelSendLongPress()"
+        ontouchmove="cancelSendLongPress()"
+        oncontextmenu="openSchedulePopup(); return false;"
+        class="w-10 h-10 rounded-full flex items-center justify-center" style="background:#2196F3;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+      <span class="text-xs text-gray-400 mt-0.5">SMS</span>
+    </div>
+  </div>
+
+</div><!-- /screen-chat -->
+
+<!-- ═════════════════════ POPUP: Message Options ═════════════════════ -->
+<div id="popup-overlay" class="overlay" onclick="closePopup(event)">
+  <div class="bg-white rounded-xl shadow-2xl w-72 overflow-hidden" onclick="event.stopPropagation()">
+    <div class="px-6 pt-5 pb-3 border-b border-gray-100">
+      <h3 class="text-base font-semibold text-black">Choose an option</h3>
+    </div>
+    <div>
+      <button class="w-full text-left px-6 py-4 text-sm text-black active:bg-gray-100 flex items-center gap-3 min-h-[52px]" onclick="popupAction('copy')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#555"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+        Copy message
+      </button>
+      <button class="w-full text-left px-6 py-4 text-sm flex items-center gap-3 min-h-[52px] active:bg-gray-100" style="color:#D32F2F;" onclick="popupAction('delete')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D32F2F"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+        Delete the message
+      </button>
+      <button class="w-full text-left px-6 py-4 text-sm text-black flex items-center gap-3 min-h-[52px] active:bg-gray-100" onclick="popupAction('edit')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#555"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        Change the text
+      </button>
+    </div>
+    <div class="px-6 pb-5 pt-3 flex justify-end">
+      <button class="text-sm font-medium text-blue-500 active:opacity-60" onclick="closePopupDirect()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════════ POPUP: Color Picker ═════════════════════ -->
+<div id="color-picker-overlay" class="overlay" onclick="closeColorPickerOverlay(event)">
+  <div class="bg-white rounded-xl shadow-2xl w-72 px-6 pt-6 pb-5" onclick="event.stopPropagation()">
+    <h3 class="text-xl font-semibold text-black mb-6">Choose the color icon</h3>
+
+    <!-- Row 1: 5 circles -->
+    <div class="flex justify-center gap-4 mb-4">
+      <div class="w-10 h-10 rounded-full cursor-pointer active:scale-110 transition-transform color-pick-circle" style="background:#3B82F6;" onclick="selectPickerColor('#3B82F6', this)"></div>
+      <div class="w-10 h-10 rounded-full cursor-pointer active:scale-110 transition-transform color-pick-circle" style="background:#8B5CF6;" onclick="selectPickerColor('#8B5CF6', this)"></div>
+      <div class="w-10 h-10 rounded-full cursor-pointer active:scale-110 transition-transform color-pick-circle" style="background:#38BDF8;" onclick="selectPickerColor('#38BDF8', this)"></div>
+      <div class="w-10 h-10 rounded-full cursor-pointer active:scale-110 transition-transform color-pick-circle" style="background:#14B8A6;" onclick="selectPickerColor('#14B8A6', this)"></div>
+      <div class="w-10 h-10 rounded-full cursor-pointer active:scale-110 transition-transform color-pick-circle" style="background:#22C55E;" onclick="selectPickerColor('#22C55E', this)"></div>
+    </div>
+    <!-- Row 2: 4 circles centered -->
+    <div class="flex justify-center gap-4 mb-6">
+      <div class="w-10 h-10 rounded-full cursor-pointer active:scale-110 transition-transform color-pick-circle" style="background:#EC4899;" onclick="selectPickerColor('#EC4899', this)"></div>
+      <div class="w-10 h-10 rounded-full cursor-pointer active:scale-110 transition-transform color-pick-circle" style="background:#EF4444;" onclick="selectPickerColor('#EF4444', this)"></div>
+      <div class="w-10 h-10 rounded-full cursor-pointer active:scale-110 transition-transform color-pick-circle" style="background:#FACC15; border:1px solid #e0c500;" onclick="selectPickerColor('#FACC15', this)"></div>
+      <div class="w-10 h-10 rounded-full cursor-pointer active:scale-110 transition-transform color-pick-circle" style="background:#F97316;" onclick="selectPickerColor('#F97316', this)"></div>
+    </div>
+
+    <!-- OK button -->
+    <div class="flex justify-end">
+      <button class="text-base font-medium text-blue-500 px-2 py-1 active:opacity-60" onclick="confirmColorPicker()">OK</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════════ SCREEN: CONTACTS ═════════════════════ -->
+<div id="screen-contacts" class="screen" style="display:none;">
+  <div class="px-5 pt-4 pb-3 flex items-center justify-between border-b border-gray-100">
+    <h1 class="text-2xl font-medium text-black">Contacts</h1>
+    <button class="text-2xl text-black" onclick="toggleContactSearch()">🔍</button>
+  </div>
+  <div id="contact-search-bar" class="hidden px-4 py-2 border-b border-gray-100">
+    <input id="contact-search-input" type="text" placeholder="Search contacts..."
+      class="w-full border border-gray-300 rounded-full px-4 py-2 text-sm text-black"
+      oninput="filterContacts(this.value)" />
+  </div>
+  <div id="contacts-list" class="overflow-y-auto" style="height: calc(100dvh - 130px);"></div>
+  <!-- Bottom Nav (contacts tab active) -->
+  <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white border-t border-gray-100 flex items-center justify-around py-3 z-30">
+    <div class="flex flex-col items-center gap-1 cursor-pointer min-w-[80px]" onclick="switchTab('conversations')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#666"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+      <span class="text-xs text-gray-500">Conversations</span>
+    </div>
+    <div class="flex flex-col items-center gap-1 cursor-pointer min-w-[80px]">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#2196F3"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+      <span class="text-xs font-medium nav-active-dot" style="color:#2196F3;">Contacts</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════════ POPUP: New Conversation ═════════════════════ -->
+<div id="new-conv-overlay" class="overlay" onclick="closeNewConversation(event)">
+  <div class="bg-white rounded-xl shadow-2xl w-72 px-6 pt-6 pb-5" onclick="event.stopPropagation()">
+    <h3 class="text-xl font-semibold text-black mb-1">New conversation</h3>
+    <p class="text-sm text-gray-500 mb-5">Enter a name or number to start</p>
+    <input id="new-conv-input" type="text"
+      class="w-full border-b-2 border-blue-500 text-base text-black pb-1 mb-2 bg-transparent focus:outline-none"
+      placeholder="Name or phone number"
+      onkeydown="if(event.key==='Enter') startNewConversation()" />
+    <!-- Matching contacts -->
+    <div id="new-conv-suggestions" class="mt-2 mb-3 max-h-40 overflow-y-auto"></div>
+    <div class="flex justify-end gap-4 mt-3">
+      <button class="text-sm font-medium text-gray-500 px-2 py-1 active:opacity-60" onclick="document.getElementById('new-conv-overlay').classList.remove('show')">Cancel</button>
+      <button class="text-sm font-medium text-blue-500 px-2 py-1 active:opacity-60" onclick="startNewConversation()">Start</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════════ PANEL: Settings ═════════════════════ -->
+<div id="settings-overlay" class="overlay" onclick="closeSettings(event)">
+  <div class="bg-white rounded-xl shadow-2xl w-80 overflow-hidden" onclick="event.stopPropagation()">
+    <div class="px-6 pt-5 pb-3 border-b border-gray-100 flex items-center justify-between">
+      <h3 class="text-xl font-semibold text-black">Settings</h3>
+      <button onclick="document.getElementById('settings-overlay').classList.remove('show')" class="text-gray-400 text-xl leading-none">✕</button>
+    </div>
+    <div>
+      <div class="px-6 py-4 border-b border-gray-50">
+        <p class="text-xs text-gray-400 uppercase tracking-wide font-medium mb-3">Notifications</p>
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-black">Message notifications</span>
+          <div id="toggle-notif" class="w-11 h-6 rounded-full cursor-pointer transition-colors relative" style="background:#2196F3;" onclick="toggleSetting('notif')">
+            <div class="absolute top-0.5 right-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform"></div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between mt-3">
+          <span class="text-sm text-black">Sound</span>
+          <div id="toggle-sound" class="w-11 h-6 rounded-full cursor-pointer transition-colors relative" style="background:#2196F3;" onclick="toggleSetting('sound')">
+            <div class="absolute top-0.5 right-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform"></div>
+          </div>
+        </div>
+      </div>
+      <div class="px-6 py-4 border-b border-gray-50">
+        <p class="text-xs text-gray-400 uppercase tracking-wide font-medium mb-3">Messages</p>
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-black">Delivery reports</span>
+          <div id="toggle-delivery" class="w-11 h-6 rounded-full cursor-pointer transition-colors relative" style="background:#ccc;" onclick="toggleSetting('delivery')">
+            <div class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform"></div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between mt-3">
+          <span class="text-sm text-black">Auto-delete old messages</span>
+          <div id="toggle-autodel" class="w-11 h-6 rounded-full cursor-pointer transition-colors relative" style="background:#ccc;" onclick="toggleSetting('autodel')">
+            <div class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform"></div>
+          </div>
+        </div>
+      </div>
+      <div class="px-6 py-4">
+        <p class="text-xs text-gray-400 uppercase tracking-wide font-medium mb-3">About</p>
+        <div class="text-sm text-gray-500">Version 1.0.0 · Samsung Messages Clone</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="edit-name-overlay" class="overlay" onclick="closeEditNameOverlay(event)">
+  <div class="bg-white rounded-xl shadow-2xl w-72 px-6 pt-6 pb-5" onclick="event.stopPropagation()">
+    <h3 class="text-xl font-semibold text-black mb-5">Number Contact/Full Name</h3>
+    <input id="edit-name-input" type="text"
+      class="w-full border-b-2 border-blue-500 text-base text-black pb-1 mb-6 bg-transparent focus:outline-none"
+      placeholder=""
+      onkeydown="if(event.key==='Enter') saveContactName()" />
+    <div class="flex justify-end">
+      <button class="text-base font-medium text-blue-500 px-2 py-1 active:opacity-60" onclick="saveContactName()">OK</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═════════════════════ POPUP: Conversation Options ═════════════════════ -->
+<div id="conv-menu-overlay" class="overlay" onclick="closeConvMenu(event)">
+  <div class="bg-white rounded-xl shadow-2xl w-64 overflow-hidden" onclick="event.stopPropagation()">
+    <div id="conv-menu-name" class="px-5 py-3 border-b border-gray-100 text-sm font-semibold text-gray-500"></div>
+    <button class="w-full text-left px-5 py-3.5 text-sm text-black active:bg-gray-100 flex items-center gap-3" onclick="convMenuAction('unread')">
+      <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="18" cy="6" r="5" fill="#2196F3"/><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V7.83A6.97 6.97 0 0 1 18 9V18H6.83L4 20.17V4h9.17A6.97 6.97 0 0 1 12.17 2H4z" fill="#555"/></svg>
+      Mark as unread
+    </button>
+    <button class="w-full text-left px-5 py-3.5 text-sm text-black active:bg-gray-100 flex items-center gap-3" onclick="convMenuAction('read')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#555"><path d="M17.6 10.8L16.2 9.4l-5.2 5.2-2.8-2.8-1.4 1.4L11 17.4l6.6-6.6zM20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+      Mark as read
+    </button>
+    <button class="w-full text-left px-5 py-3.5 text-sm active:bg-gray-100 flex items-center gap-3" style="color:#D32F2F;" onclick="convMenuAction('delete')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#D32F2F"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+      Delete conversation
+    </button>
+  </div>
+</div>
+
+<!-- ═════════════════════ POPUP: Schedule Message ═════════════════════ -->
+<div id="schedule-overlay" class="overlay" onclick="closeScheduleOverlay(event)">
+  <div class="bg-white rounded-xl shadow-2xl w-72 px-6 pt-6 pb-5" onclick="event.stopPropagation()">
+    <div class="flex items-center gap-3 mb-5">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#2196F3"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+      <h3 class="text-xl font-semibold text-black">Schedule message</h3>
+    </div>
+    <div id="schedule-preview" class="bg-gray-100 rounded-2xl px-4 py-2 text-sm text-black mb-5 leading-relaxed" style="max-height:60px;overflow:hidden;"></div>
+    <div class="mb-4">
+      <label class="text-xs text-gray-400 uppercase tracking-wide font-medium block mb-1">Date</label>
+      <input id="schedule-date" type="date" class="w-full border-b-2 text-base text-black pb-1 bg-transparent focus:outline-none" style="border-color:#d1d5db;" onfocus="this.style.borderColor='#2196F3'" onblur="this.style.borderColor='#d1d5db'" />
+    </div>
+    <div class="mb-5">
+      <label class="text-xs text-gray-400 uppercase tracking-wide font-medium block mb-1">Time</label>
+      <input id="schedule-time" type="time" class="w-full border-b-2 text-base text-black pb-1 bg-transparent focus:outline-none" style="border-color:#d1d5db;" onfocus="this.style.borderColor='#2196F3'" onblur="this.style.borderColor='#d1d5db'" />
+    </div>
+    <div id="scheduled-list-wrap" class="hidden mb-4 border-t border-gray-100 pt-3">
+      <p class="text-xs text-gray-400 uppercase tracking-wide font-medium mb-2">⏳ Queued for this chat</p>
+      <div id="scheduled-list" class="max-h-28 overflow-y-auto"></div>
+    </div>
+    <div class="flex justify-between items-center pt-1">
+      <button class="text-sm font-medium text-gray-500 px-2 py-1 active:opacity-60" onclick="document.getElementById('schedule-overlay').classList.remove('show')">Cancel</button>
+      <button class="text-sm font-semibold px-3 py-1.5 rounded-full active:opacity-70" style="background:#2196F3;color:white;" onclick="confirmSchedule()">Schedule ✓</button>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  const avatarColors = {
+    blue:   '#2196F3',
+    yellow: '#FFEB3B',
+    purple: '#9C27B0',
+    green:  '#4CAF50',
+    orange: '#FF9800',
+    red:    '#F44336',
+    teal:   '#00BCD4',
+  };
+
+  // Scheduled messages: { id, contactId, text, sendAt (ISO string) }
+  let scheduledMessages = [];
+
+  const contacts = [
+    {
+      id: 1, name: 'Mum', initials: 'M', color: avatarColors.green,
+      preview: 'Can you pick up some milk on your way home?', time: '6:56 pm', unread: 2,
+      messages: [
+        { text: 'Hi darling, are you home yet?', time: '9 Jun, 18:45' },
+        { text: 'Call me on 237 6712 8934 when you can 😊', time: '9 Jun, 18:46' },
+        { text: 'Also, can you pick up some milk on your way home?', time: '9 Jun, 18:55' },
+        { text: "Sure Mum, I'll grab some on the way!", time: '9 Jun, 19:01' },
+        { text: 'Call me on 237612345678 when you get a chance!', time: '9 Jun, 19:20' },
+        { text: 'Or try 237699887766 — that\'s your uncle\'s number', time: '9 Jun, 19:21' },
+        { text: 'Drive safely!', time: '9 Jun, 19:11' },
+      ]
+    },
+    {
+      id: 2, name: 'Jake', initials: 'J', color: avatarColors.blue,
+      preview: 'Bro the game last night was INSANE 🔥', time: '8:22 am', unread: 0,
+      messages: [
+        { text: 'Yo, you watching the game tonight?', time: '8 Jun, 20:10' },
+        { text: 'Obviously! Kickoff at 8 right?', time: '8 Jun, 20:12' },
+        { text: 'Yeah 8:15. Get the snacks ready lol', time: '8 Jun, 20:13' },
+        { text: 'Already on it 😂🍕', time: '8 Jun, 20:14' },
+        { text: 'Bro the game last night was INSANE 🔥', time: '9 Jun, 08:22' },
+        { text: 'I know right!! That last minute goal 🤯', time: '9 Jun, 08:30' },
+      ]
+    },
+    {
+      id: 3, name: 'Sarah ❤️', initials: 'S', color: avatarColors.purple,
+      preview: 'Miss you already 🥺 see you Friday!', time: '7:41 pm', unread: 1,
+      messages: [
+        { text: 'Good morning! ☀️ Hope your day is amazing', time: '9 Jun, 07:15' },
+        { text: 'Good morning! You too 😊 coffee date still on?', time: '9 Jun, 07:20' },
+        { text: 'Of course! 3pm at our usual place?', time: '9 Jun, 07:22' },
+        { text: 'Perfect! Can\'t wait to see you 💜', time: '9 Jun, 07:25' },
+        { text: 'That was such a lovely afternoon 🥰', time: '9 Jun, 17:55' },
+        { text: 'Miss you already 🥺 see you Friday!', time: '9 Jun, 19:41' },
+      ]
+    },
+    {
+      id: 4, name: 'Vodafone UK', initials: 'V', color: avatarColors.red,
+      preview: 'Your bill of £32.50 is ready to view.', time: '8 Jun', unread: 0,
+      messages: [
+        { text: 'Your monthly bill of £32.50 is now ready. Log in at vodafone.co.uk/myaccount to view your bill.', time: '8 Jun, 10:00' },
+        { text: 'Payment due by 23 Jun 2026. Reply STOP to opt out.', time: '8 Jun, 10:01' },
+      ]
+    },
+    {
+      id: 5, name: 'Dad', initials: 'D', color: avatarColors.orange,
+      preview: 'Lunch on Sunday? Your mother is cooking 😄', time: '7 Jun', unread: 0,
+      messages: [
+        { text: 'Hi son, hope work is going well!', time: '7 Jun, 11:30' },
+        { text: 'Lunch on Sunday? Your mother is cooking 😄', time: '7 Jun, 11:31' },
+        { text: 'Your nan is coming too if you fancy it', time: '7 Jun, 11:33' },
+        { text: 'Sounds great Dad! I\'ll be there 😊', time: '7 Jun, 13:05' },
+        { text: 'Brilliant! See you around 1pm then', time: '7 Jun, 13:10' },
+      ]
+    },
+    {
+      id: 6, name: 'Amazon', initials: 'A', color: avatarColors.orange,
+      preview: 'Your order has been dispatched and is on its way!', time: '6 Jun', unread: 0,
+      messages: [
+        { text: 'Hello, your order #204-9312876 has been dispatched.', time: '6 Jun, 09:00' },
+        { text: 'Estimated delivery: Tuesday 10 Jun between 09:00–21:00.', time: '6 Jun, 09:01' },
+        { text: 'Track your parcel at amazon.co.uk/orders', time: '6 Jun, 09:01' },
+      ]
+    },
+    {
+      id: 7, name: 'Work Group 💼', initials: 'W', color: avatarColors.teal,
+      preview: 'Tom: Don\'t forget the standup at 10!', time: '5 Jun', unread: 3,
+      messages: [
+        { text: 'Morning team! Quick reminder: sprint review at 2pm today 🚀', time: '5 Jun, 08:55' },
+        { text: 'Tom: Don\'t forget the standup at 10!', time: '5 Jun, 09:30' },
+        { text: 'Lisa: Will the designs be ready by then?', time: '5 Jun, 09:35' },
+        { text: 'Tom: Should be — just finishing the last screen', time: '5 Jun, 09:37' },
+        { text: 'Tom: Don\'t forget the standup at 10!', time: '5 Jun, 09:48' },
+      ]
+    },
+    {
+      id: 8, name: '+44 7700 900342', initials: '?', color: avatarColors.blue,
+      preview: 'Your verification code is 847291. Do not share.', time: '4 Jun', unread: 0,
+      messages: [
+        { text: 'Your verification code is 847291. This code will expire in 10 minutes. Do not share this code with anyone.', time: '4 Jun, 14:22' },
+      ]
+    },
+  ];
+
+  let currentContact = null;
+  let selectedMsgEl = null;
+
+  // ─── RENDER LIST ────────────────────────────────────────────────────────────
+  function renderList() {
+    const container = document.getElementById('conversation-list');
+    container.innerHTML = contacts.map(c => `
+      <div class="flex items-center px-4 py-3 border-b border-gray-100 active:bg-gray-50 cursor-pointer min-h-[72px]"
+        onclick="showChat(${c.id})"
+        ontouchstart="startConvLongPress(event,${c.id})"
+        ontouchend="cancelConvLongPress()"
+        ontouchmove="cancelConvLongPress()"
+        oncontextmenu="showConvMenu(event,${c.id}); return false;">
+        <div class="relative flex-shrink-0">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold text-lg select-none"
+            style="background:${c.color}; ${c.color === avatarColors.yellow ? 'color:#333;' : ''}">
+            ${c.initials}
+          </div>
+          ${c.unread > 0 ? `<span style="position:absolute;top:0;right:0;width:10px;height:10px;background:#2196F3;border-radius:50%;border:2px solid white;"></span>` : ''}
+        </div>
+        <div class="flex-1 min-w-0 ml-3">
+          <div class="flex justify-between items-baseline">
+            <span class="${c.unread > 0 ? 'font-bold' : 'font-semibold'} text-black text-[15px] truncate max-w-[180px]">${c.name}</span>
+            <span class="text-xs ${c.unread > 0 ? 'text-blue-500 font-semibold' : 'text-gray-500'} flex-shrink-0 ml-2">${c.time}</span>
+          </div>
+          <div class="flex justify-between items-center mt-0.5">
+            <span class="text-sm ${c.unread > 0 ? 'text-black font-medium' : 'text-gray-500'} truncate max-w-[210px]">${c.preview}</span>
+            ${c.unread > 0 ? `<span class="ml-2 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:#2196F3; min-width:20px;">${c.unread}</span>` : ''}
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ─── SHOW CHAT ───────────────────────────────────────────────────────────────
+  function showChat(id) {
+    currentContact = contacts.find(c => c.id === id);
+    if (!currentContact) return;
+
+    // Mark as read
+    currentContact.unread = 0;
+    saveData();
+    renderList();
+
+    document.getElementById('screen-list').style.display = 'none';
+    document.getElementById('screen-chat').style.display = 'block';
+
+    const nameEl = document.getElementById('chat-name-top');
+    const avatarEl = document.getElementById('chat-avatar-top');
+    const statusEl = document.getElementById('chat-status-top');
+
+    nameEl.textContent = currentContact.name;
+    avatarEl.textContent = currentContact.initials;
+    avatarEl.style.background = currentContact.color;
+    avatarEl.style.color = currentContact.color === avatarColors.yellow ? '#333' : 'white';
+    statusEl.textContent = 'Mobile · SMS';
+
+    // Always hide input bar on chat open (easter egg)
+    toggleInputBar(false);
+
+    renderMessages();
+    scrollToBottom();
+    document.getElementById('message-input').value = '';
+    hideSuggestions();
+  }
+
+  // ─── RENDER MESSAGES ─────────────────────────────────────────────────────────
+  function renderMessages() {
+    const container = document.getElementById('chat-messages');
+    if (!currentContact) return;
+
+    container.innerHTML = currentContact.messages.map((msg, idx) => `
+      <div class="flex items-end mb-4 msg-group" data-idx="${idx}">
+        <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-semibold text-sm select-none cursor-pointer"
+          style="background:${currentContact.color}; color:${currentContact.color === '#FACC15' ? '#333' : 'white'};"
+          ontouchstart="startAvatarLongPress(event)"
+          ontouchend="cancelAvatarLongPress()"
+          ontouchmove="cancelAvatarLongPress()"
+          oncontextmenu="showColorPicker(event); return false;"
+          onclick="cancelAvatarLongPress()">
+          ${currentContact.initials}
+        </div>
+        <div class="ml-2 max-w-[75%]">
+          <div class="msg-bubble rounded-2xl px-4 py-2.5 bg-gray-100 text-black text-sm leading-relaxed cursor-pointer select-none"
+            oncontextmenu="showPopup(event, ${idx}); return false;"
+            ontouchstart="startLongPress(event, ${idx})"
+            ontouchend="cancelLongPress()"
+            ontouchmove="cancelLongPress()"
+            onclick="handleBubbleClick(event, ${idx})">
+            ${formatMessageText(msg.text)}
+          </div>
+          <div class="text-xs text-gray-400 mt-1 ml-1">${msg.time}</div>
+        </div>
+      </div>
+    `).join('');
+
+    // Append scheduled message banners for this chat
+    const pending = scheduledMessages.filter(s => s.contactId === currentContact.id);
+    pending.forEach(s => {
+      const dt = new Date(s.sendAt);
+      const label = `${dt.getDate()} Jun, ${String(dt.getHours()).padStart(2,'0')}:${String(dt.getMinutes()).padStart(2,'0')}`;
+      container.innerHTML += `
+        <div class="flex items-end mb-4" style="opacity:0.75;">
+          <div class="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-semibold text-sm"
+            style="background:${currentContact.color};color:${currentContact.color==='#FACC15'?'#333':'white'};">
+            ${currentContact.initials}
+          </div>
+          <div class="ml-2 max-w-[75%]">
+            <div class="rounded-2xl px-4 py-2.5 text-sm leading-relaxed border-2 border-dashed" style="border-color:#2196F3;color:#2196F3;background:#e3f2fd;">
+              ${escapeHtml(s.text)}
+            </div>
+            <div class="flex items-center gap-1 mt-1 ml-1">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="#2196F3"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+              <span class="text-xs" style="color:#2196F3;">Scheduled for ${label}</span>
+              <button onclick="cancelScheduled('${s.id}')" class="text-xs ml-2 active:opacity-50" style="color:#D32F2F;">✕ Cancel</button>
+            </div>
+          </div>
+        </div>`;
+    });
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // Escapes HTML then wraps any number starting with 237 as a tappable dialer link.
+  // Matches 237 followed by at least 5 more digits, allowing spaces/dashes between digits.
+  function formatMessageText(str) {
+    const escaped = escapeHtml(str);
+    return escaped.replace(/(237[\d\s\-]{5,20})/g, match => {
+      const digits = match.replace(/[\s\-]/g, '');
+      const styled = match.split('').map(ch =>
+        /\d/.test(ch)
+          ? `<span style="color:#38BDF8;text-decoration:underline;text-underline-offset:2px;">${ch}</span>`
+          : ch
+      ).join('');
+      return `<a href="tel:${digits}" onclick="event.stopPropagation()" style="text-decoration:none; cursor:pointer;">${styled}</a>`;
+    });
+  }
+
+
+  // ─── SHOW LIST ────────────────────────────────────────────────────────────────
+  function showList() {
+    document.getElementById('screen-chat').style.display = 'none';
+    document.getElementById('screen-list').style.display = 'block';
+    closeAllKebabs();
+  }
+
+  // ─── SEND MESSAGE ─────────────────────────────────────────────────────────────
+  function sendMessage() {
+    const input = document.getElementById('message-input');
+    const text = input.value.trim();
+    if (!text || !currentContact) return;
+
+    const now = new Date();
+    const time = `${now.getDate()} Jun, ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+    currentContact.messages.push({ text, time });
+    currentContact.preview = text;
+    currentContact.time = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+    input.value = '';
+    hideSuggestions();
+    renderMessages();
+    scrollToBottom();
+    saveData();
+    renderList();
+  }
+
+  // ─── INPUT HANDLER ────────────────────────────────────────────────────────────
+  function onInputChange(el) {
+    if (el.value.length > 0) {
+      showSuggestions();
+    } else {
+      hideSuggestions();
+    }
+  }
+
+  function showSuggestions() {
+    document.getElementById('suggestion-bar').classList.add('visible');
+  }
+
+  function hideSuggestions() {
+    document.getElementById('suggestion-bar').classList.remove('visible');
+  }
+
+  function insertSuggestion(text) {
+    const input = document.getElementById('message-input');
+    input.value = text;
+    input.focus();
+  }
+
+  // ─── POPUP ───────────────────────────────────────────────────────────────────
+  let longPressTimer = null;
+  let currentMsgIdx = -1;
+
+  function startLongPress(e, idx) {
+    longPressTimer = setTimeout(() => {
+      showPopup(e, idx);
+    }, 500);
+  }
+
+  function cancelLongPress() {
+    if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null; }
+  }
+
+  function handleBubbleClick(e, idx) {
+    cancelLongPress();
+  }
+
+  function showPopup(e, idx) {
+    e.preventDefault && e.preventDefault();
+    currentMsgIdx = idx;
+    document.getElementById('popup-overlay').classList.add('show');
+
+    // Highlight selected bubble
+    document.querySelectorAll('.msg-bubble').forEach((el, i) => {
+      el.style.background = i === idx ? '#e0e0e0' : '';
+    });
+  }
+
+  function closePopup(e) {
+    if (e.target === document.getElementById('popup-overlay')) {
+      closePopupDirect();
+    }
+  }
+
+  function closePopupDirect() {
+    document.getElementById('popup-overlay').classList.remove('show');
+    document.querySelectorAll('.msg-bubble').forEach(el => el.style.background = '');
+    currentMsgIdx = -1;
+  }
+
+  function popupAction(action) {
+    if (!currentContact || currentMsgIdx < 0) { closePopupDirect(); return; }
+    const msg = currentContact.messages[currentMsgIdx];
+
+    if (action === 'copy') {
+      navigator.clipboard && navigator.clipboard.writeText(msg.text).catch(() => {});
+      showToast('Message copied');
+    } else if (action === 'delete') {
+      currentContact.messages.splice(currentMsgIdx, 1);
+      saveData();
+      renderMessages();
+      renderList();
+      showToast('Message deleted');
+    } else if (action === 'edit') {
+      const input = document.getElementById('message-input');
+      input.value = msg.text;
+      input.focus();
+      currentContact.messages.splice(currentMsgIdx, 1);
+      saveData();
+      renderMessages();
+    }
+    closePopupDirect();
+  }
+
+  // ─── INPUT BAR EASTER EGG ────────────────────────────────────────────────────
+  function toggleInputBar(show) {
+    const bar = document.getElementById('chat-input-bar');
+    const suggBar = document.getElementById('suggestion-bar');
+    if (show) {
+      bar.style.transform = 'translateX(-50%) translateY(0)';
+      localStorage.setItem('inputHidden', 'false');
+    } else {
+      bar.style.transform = 'translateX(-50%) translateY(100%)';
+      suggBar.classList.remove('visible');
+      localStorage.setItem('inputHidden', 'true');
+    }
+  }
+
+  function deleteCurrentChat() {
+    if (!currentContact) return;
+    if (!confirm(`Delete conversation with ${currentContact.name}?`)) return;
+    const idx = contacts.findIndex(c => c.id === currentContact.id);
+    if (idx > -1) contacts.splice(idx, 1);
+    saveData();
+    renderList();
+    showList();
+  }
+
+  function markCurrentAsUnread() {
+    if (!currentContact) return;
+    currentContact.unread = 1;
+    saveData();
+    showList();
+    showToast('Marked as unread');
+  }
+
+
+  function editContactName() {
+    if (!currentContact) return;
+    const input = document.getElementById('edit-name-input');
+    input.value = currentContact.name;
+    document.getElementById('edit-name-overlay').classList.add('show');
+    setTimeout(() => { input.focus(); input.select(); }, 100);
+  }
+
+  function saveContactName() {
+    if (!currentContact) return;
+    const input = document.getElementById('edit-name-input');
+    const newName = input.value.trim();
+    if (!newName) return;
+    currentContact.name = newName;
+    // Update chat header
+    document.getElementById('chat-name-top').textContent = newName;
+    // Update conversation list
+    saveData();
+    renderList();
+    document.getElementById('edit-name-overlay').classList.remove('show');
+  }
+
+  function closeEditNameOverlay(e) {
+    if (e.target === document.getElementById('edit-name-overlay')) {
+      document.getElementById('edit-name-overlay').classList.remove('show');
+    }
+  }
+
+
+  let avatarLongPressTimer = null;
+  let pendingColor = null;
+
+  function startAvatarLongPress(e) {
+    avatarLongPressTimer = setTimeout(() => {
+      showColorPicker(e);
+    }, 500);
+  }
+
+  function cancelAvatarLongPress() {
+    if (avatarLongPressTimer) { clearTimeout(avatarLongPressTimer); avatarLongPressTimer = null; }
+  }
+
+  function showColorPicker(e) {
+    e && e.preventDefault && e.preventDefault();
+    pendingColor = null;
+    // Reset selection rings
+    document.querySelectorAll('.color-pick-circle').forEach(el => {
+      el.style.outline = '';
+      el.style.outlineOffset = '';
+    });
+    document.getElementById('color-picker-overlay').classList.add('show');
+  }
+
+  function selectPickerColor(color, el) {
+    pendingColor = color;
+    document.querySelectorAll('.color-pick-circle').forEach(c => {
+      c.style.outline = '';
+      c.style.outlineOffset = '';
+    });
+    el.style.outline = '3px solid #000';
+    el.style.outlineOffset = '2px';
+  }
+
+  function confirmColorPicker() {
+    if (pendingColor && currentContact) {
+      changeAvatarColor(currentContact.id, pendingColor);
+    }
+    document.getElementById('color-picker-overlay').classList.remove('show');
+    pendingColor = null;
+  }
+
+  function closeColorPickerOverlay(e) {
+    if (e.target === document.getElementById('color-picker-overlay')) {
+      document.getElementById('color-picker-overlay').classList.remove('show');
+      pendingColor = null;
+    }
+  }
+
+  function changeAvatarColor(contactId, color) {
+    const contact = contacts.find(c => c.id === contactId);
+    if (!contact) return;
+    contact.color = color;
+    const avatarEl = document.getElementById('chat-avatar-top');
+    if (avatarEl) {
+      avatarEl.style.background = color;
+      avatarEl.style.color = color === '#FACC15' ? '#333' : 'white';
+    }
+    renderMessages();
+    saveData();
+    renderList();
+  }
+
+  // ─── TOAST ───────────────────────────────────────────────────────────────────
+  function showToast(msg) {
+    const toast = document.createElement('div');
+    toast.textContent = msg;
+    toast.style.cssText = 'position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#333;color:white;padding:8px 18px;border-radius:20px;font-size:13px;z-index:999;white-space:nowrap;opacity:1;transition:opacity 0.4s;';
+    document.body.appendChild(toast);
+    setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 400); }, 1800);
+  }
+
+  // ─── KEBAB MENUS ─────────────────────────────────────────────────────────────
+  function toggleKebab(id) {
+    const menu = document.getElementById(id);
+    const isOpen = menu.classList.contains('show');
+    closeAllKebabs();
+    if (!isOpen) menu.classList.add('show');
+  }
+
+  function closeAllKebabs() {
+    document.querySelectorAll('.kebab-menu').forEach(m => m.classList.remove('show'));
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.kebab-menu') && !e.target.closest('[onclick*="toggleKebab"]')) {
+      closeAllKebabs();
+    }
+  });
+
+  // ─── SEARCH BAR ──────────────────────────────────────────────────────────────
+  function toggleSearch() {
+    const bar = document.getElementById('search-bar');
+    bar.classList.toggle('hidden');
+    if (!bar.classList.contains('hidden')) {
+      const input = bar.querySelector('input');
+      input.value = '';
+      input.focus();
+      renderList();
+    } else {
+      renderList();
+    }
+  }
+
+  function clearSearch() {
+    const bar = document.getElementById('search-bar');
+    const input = bar.querySelector('input');
+    input.value = '';
+    input.focus();
+    renderList();
+  }
+
+  function filterConversations(val) {
+    const container = document.getElementById('conversation-list');
+    const filtered = contacts.filter(c =>
+      c.name.toLowerCase().includes(val.toLowerCase()) ||
+      c.preview.toLowerCase().includes(val.toLowerCase())
+    );
+    container.innerHTML = filtered.map(c => `
+      <div class="flex items-center px-4 py-3 border-b border-gray-100 active:bg-gray-50 cursor-pointer min-h-[72px]"
+        onclick="showChat(${c.id})">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center font-semibold text-lg select-none"
+          style="background:${c.color}; color:${c.color === '#FACC15' ? '#333' : 'white'};">${c.initials}</div>
+        <div class="flex-1 min-w-0 ml-3">
+          <div class="flex justify-between items-baseline">
+            <span class="font-semibold text-black text-[15px] truncate max-w-[180px]">${c.name}</span>
+            <span class="text-xs text-gray-500 flex-shrink-0 ml-2">${c.time}</span>
+          </div>
+          <div class="flex justify-between items-center mt-0.5">
+            <span class="text-sm text-gray-500 truncate max-w-[210px]">${c.preview}</span>
+            ${c.unread > 0 ? `<span class="ml-2 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:#2196F3; min-width:20px;">${c.unread}</span>` : ''}
+          </div>
+        </div>
+      </div>
+    `).join('') || '<div class="px-5 py-8 text-sm text-gray-400 text-center">No conversations found</div>';
+  }
+
+  // ─── TAB SWITCHING ───────────────────────────────────────────────────────────
+  function switchTab(tab) {
+    document.getElementById('screen-list').style.display = tab === 'conversations' ? 'block' : 'none';
+    document.getElementById('screen-contacts').style.display = tab === 'contacts' ? 'block' : 'none';
+    if (tab === 'contacts') renderContactsTab();
+  }
+
+  // ─── CONTACTS TAB ────────────────────────────────────────────────────────────
+  function renderContactsTab(filter = '') {
+    const list = document.getElementById('contacts-list');
+    const filtered = contacts.filter(c =>
+      c.name.toLowerCase().includes(filter.toLowerCase()) ||
+      (c.messages[0] && c.messages[0].text.toLowerCase().includes(filter.toLowerCase()))
+    );
+    // Group by first letter
+    const grouped = {};
+    filtered.forEach(c => {
+      const letter = c.name[0].toUpperCase();
+      if (!grouped[letter]) grouped[letter] = [];
+      grouped[letter].push(c);
+    });
+    list.innerHTML = Object.keys(grouped).sort().map(letter => `
+      <div>
+        <div class="px-5 py-1.5 text-xs font-semibold text-blue-500 bg-gray-50">${letter}</div>
+        ${grouped[letter].map(c => `
+          <div class="flex items-center px-5 py-3 border-b border-gray-100 active:bg-gray-50 cursor-pointer min-h-[60px]"
+            onclick="showChat(${c.id}); switchTab('conversations')">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center font-semibold text-base mr-3 flex-shrink-0"
+              style="background:${c.color}; color:${c.color === '#FACC15' ? '#333' : 'white'};">
+              ${c.initials}
+            </div>
+            <span class="text-[15px] text-black font-medium">${c.name}</span>
+          </div>
+        `).join('')}
+      </div>
+    `).join('') || '<div class="px-5 py-8 text-sm text-gray-400 text-center">No contacts found</div>';
+  }
+
+  function toggleContactSearch() {
+    const bar = document.getElementById('contact-search-bar');
+    bar.classList.toggle('hidden');
+    if (!bar.classList.contains('hidden')) document.getElementById('contact-search-input').focus();
+  }
+
+  function filterContacts(val) { renderContactsTab(val); }
+
+  // ─── NEW CONVERSATION ────────────────────────────────────────────────────────
+  function openNewConversation() {
+    document.getElementById('new-conv-input').value = '';
+    document.getElementById('new-conv-suggestions').innerHTML = '';
+    document.getElementById('new-conv-overlay').classList.add('show');
+    setTimeout(() => document.getElementById('new-conv-input').focus(), 100);
+  }
+
+  document.addEventListener('input', e => {
+    if (e.target.id === 'new-conv-input') {
+      const val = e.target.value.trim().toLowerCase();
+      const box = document.getElementById('new-conv-suggestions');
+      if (!val) { box.innerHTML = ''; return; }
+      const matches = contacts.filter(c => c.name.toLowerCase().includes(val));
+      box.innerHTML = matches.map(c => `
+        <div class="flex items-center gap-3 py-2.5 cursor-pointer active:bg-gray-50 rounded-lg px-1"
+          onclick="document.getElementById('new-conv-input').value='${c.name}'; document.getElementById('new-conv-suggestions').innerHTML=''">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold flex-shrink-0"
+            style="background:${c.color}; color:${c.color === '#FACC15' ? '#333' : 'white'};">${c.initials}</div>
+          <span class="text-sm text-black">${c.name}</span>
+        </div>
+      `).join('');
+    }
+  });
+
+  function startNewConversation() {
+    const val = document.getElementById('new-conv-input').value.trim();
+    if (!val) return;
+    document.getElementById('new-conv-overlay').classList.remove('show');
+    // Check if contact exists
+    const existing = contacts.find(c => c.name.toLowerCase() === val.toLowerCase());
+    if (existing) { showChat(existing.id); return; }
+    // Create new contact
+    const newId = contacts.length + 1;
+    const colorList = ['#3B82F6','#8B5CF6','#22C55E','#EC4899','#F97316','#14B8A6'];
+    contacts.unshift({
+      id: newId, name: val, initials: val[0].toUpperCase(),
+      color: colorList[newId % colorList.length],
+      preview: 'New conversation', time: 'now', unread: 0, messages: []
+    });
+    saveData();
+    renderList();
+    showChat(newId);
+  }
+
+  function closeNewConversation(e) {
+    if (e.target === document.getElementById('new-conv-overlay'))
+      document.getElementById('new-conv-overlay').classList.remove('show');
+  }
+
+  // ─── MARK ALL READ ───────────────────────────────────────────────────────────
+  function markAllRead() {
+    contacts.forEach(c => c.unread = 0);
+    saveData();
+    renderList();
+    showToast('All marked as read');
+  }
+
+  // ─── CONVERSATION LONG PRESS MENU ────────────────────────────────────────────
+  let convLongPressTimer = null;
+  let convMenuTargetId = null;
+
+  function startConvLongPress(e, id) {
+    convLongPressTimer = setTimeout(() => showConvMenu(e, id), 500);
+  }
+  function cancelConvLongPress() {
+    if (convLongPressTimer) { clearTimeout(convLongPressTimer); convLongPressTimer = null; }
+  }
+  function showConvMenu(e, id) {
+    e && e.preventDefault && e.preventDefault();
+    cancelConvLongPress();
+    convMenuTargetId = id;
+    const c = contacts.find(x => x.id === id);
+    if (!c) return;
+    document.getElementById('conv-menu-name').textContent = c.name;
+    document.getElementById('conv-menu-overlay').classList.add('show');
+  }
+  function closeConvMenu(e) {
+    if (e.target === document.getElementById('conv-menu-overlay'))
+      document.getElementById('conv-menu-overlay').classList.remove('show');
+  }
+  function convMenuAction(action) {
+    const c = contacts.find(x => x.id === convMenuTargetId);
+    document.getElementById('conv-menu-overlay').classList.remove('show');
+    if (!c) return;
+    if (action === 'unread') {
+      c.unread = c.unread > 0 ? c.unread : 1;
+      saveData(); renderList();
+      showToast('Marked as unread');
+    } else if (action === 'read') {
+      c.unread = 0;
+      saveData(); renderList();
+      showToast('Marked as read');
+    } else if (action === 'delete') {
+      if (!confirm(`Delete conversation with ${c.name}?`)) return;
+      const idx = contacts.findIndex(x => x.id === convMenuTargetId);
+      if (idx > -1) contacts.splice(idx, 1);
+      saveData(); renderList();
+    }
+    convMenuTargetId = null;
+  }
+
+
+  function deleteAllConversations() {
+    if (!confirm('Delete all conversations?')) return;
+    contacts.length = 0;
+    saveData();
+    renderList();
+    showToast('All conversations deleted');
+  }
+
+  // ─── SETTINGS ────────────────────────────────────────────────────────────────
+  function openSettings() {
+    document.getElementById('settings-overlay').classList.add('show');
+  }
+  function closeSettings(e) {
+    if (e.target === document.getElementById('settings-overlay'))
+      document.getElementById('settings-overlay').classList.remove('show');
+  }
+  const settingStates = { notif: true, sound: true, delivery: false, autodel: false };
+  function toggleSetting(key) {
+    settingStates[key] = !settingStates[key];
+    const el = document.getElementById('toggle-' + key);
+    const knob = el.querySelector('div');
+    if (settingStates[key]) {
+      el.style.background = '#2196F3';
+      knob.style.left = ''; knob.style.right = '2px';
+    } else {
+      el.style.background = '#ccc';
+      knob.style.right = ''; knob.style.left = '2px';
+    }
+  }
+
+  // ─── SCROLL ──────────────────────────────────────────────────────────────────
+  function scrollToBottom() {
+    const el = document.getElementById('chat-messages');
+    setTimeout(() => { el.scrollTop = el.scrollHeight; }, 50);
+  }
+
+  // ─── PERSISTENCE ─────────────────────────────────────────────────────────────
+  const STORAGE_KEY = 'samsungMessages_v1';
+  const SCHED_KEY   = 'samsungScheduled_v1';
+
+  function saveData() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts)); } catch(e) {}
+    try { localStorage.setItem(SCHED_KEY,   JSON.stringify(scheduledMessages)); } catch(e) {}
+  }
+
+  function loadData() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        contacts.length = 0;
+        parsed.forEach(c => contacts.push(c));
+      }
+    } catch(e) {}
+    try {
+      const sched = localStorage.getItem(SCHED_KEY);
+      if (sched) {
+        scheduledMessages = JSON.parse(sched);
+      }
+    } catch(e) {}
+  }
+
+  // ─── SCHEDULE MESSAGE ────────────────────────────────────────────────────────
+  let sendLongPressTimer = null;
+
+  function startSendLongPress(e) {
+    sendLongPressTimer = setTimeout(() => {
+      cancelSendLongPress();
+      openSchedulePopup();
+    }, 600);
+  }
+  function cancelSendLongPress() {
+    if (sendLongPressTimer) { clearTimeout(sendLongPressTimer); sendLongPressTimer = null; }
+  }
+
+  function openSchedulePopup() {
+    const input = document.getElementById('message-input');
+    const text = input.value.trim();
+    document.getElementById('schedule-preview').textContent = text || '(type a message first)';
+
+    // Default: today + 5 minutes
+    const now = new Date(Date.now() + 5 * 60000);
+    const pad = n => String(n).padStart(2,'0');
+    const dateStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+    const timeStr = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+    document.getElementById('schedule-date').value = dateStr;
+    document.getElementById('schedule-time').value = timeStr;
+
+    // Show queued messages for this chat
+    renderScheduledList();
+    document.getElementById('schedule-overlay').classList.add('show');
+  }
+
+  function renderScheduledList() {
+    if (!currentContact) return;
+    const mine = scheduledMessages.filter(s => s.contactId === currentContact.id);
+    const wrap = document.getElementById('scheduled-list-wrap');
+    const list = document.getElementById('scheduled-list');
+    if (mine.length === 0) { wrap.classList.add('hidden'); return; }
+    wrap.classList.remove('hidden');
+    list.innerHTML = mine.map(s => {
+      const dt = new Date(s.sendAt);
+      const label = `${dt.getDate()} Jun, ${String(dt.getHours()).padStart(2,'0')}:${String(dt.getMinutes()).padStart(2,'0')}`;
+      return `
+        <div class="flex items-center justify-between py-1.5 border-b border-gray-50 gap-2">
+          <span class="text-xs text-gray-600 truncate flex-1">${escapeHtml(s.text)}</span>
+          <span class="text-xs text-blue-500 flex-shrink-0">${label}</span>
+          <button onclick="cancelScheduled('${s.id}')" class="text-gray-300 text-base leading-none flex-shrink-0 active:text-red-400">✕</button>
+        </div>`;
+    }).join('');
+  }
+
+  function confirmSchedule() {
+    const input = document.getElementById('message-input');
+    const text = input.value.trim();
+    if (!text) { showToast('Type a message first'); return; }
+    if (!currentContact) return;
+
+    const dateVal = document.getElementById('schedule-date').value;
+    const timeVal = document.getElementById('schedule-time').value;
+    if (!dateVal || !timeVal) { showToast('Pick a date and time'); return; }
+
+    const sendAt = new Date(`${dateVal}T${timeVal}:00`);
+    if (sendAt <= new Date()) { showToast('Choose a future time'); return; }
+
+    scheduleMessage(text, sendAt);
+    input.value = '';
+    hideSuggestions();
+    document.getElementById('schedule-overlay').classList.remove('show');
+  }
+
+  function scheduleMessage(text, sendAt) {
+    const id = 'sched_' + Date.now();
+    scheduledMessages.push({
+      id,
+      contactId: currentContact.id,
+      text,
+      sendAt: sendAt.toISOString()
+    });
+    saveData();
+    renderMessages(); // shows the "Scheduled for..." banner
+    const dt = sendAt;
+    const label = `${dt.getDate()} Jun, ${String(dt.getHours()).padStart(2,'0')}:${String(dt.getMinutes()).padStart(2,'0')}`;
+    showToast(`Scheduled for ${label}`);
+  }
+
+  function cancelScheduled(id) {
+    scheduledMessages = scheduledMessages.filter(s => s.id !== id);
+    saveData();
+    renderMessages();
+    renderScheduledList();
+    showToast('Scheduled message cancelled');
+  }
+
+  function checkScheduledMessages() {
+    const now = new Date();
+    let fired = false;
+    scheduledMessages = scheduledMessages.filter(s => {
+      if (new Date(s.sendAt) <= now) {
+        const contact = contacts.find(c => c.id === s.contactId);
+        if (contact) {
+          const dt = new Date(s.sendAt);
+          const time = `${dt.getDate()} Jun, ${String(dt.getHours()).padStart(2,'0')}:${String(dt.getMinutes()).padStart(2,'0')}`;
+          contact.messages.push({ text: s.text, time });
+          contact.preview = s.text;
+          contact.time = `${String(dt.getHours()).padStart(2,'0')}:${String(dt.getMinutes()).padStart(2,'0')}`;
+          fired = true;
+          // If user is looking at this chat right now, re-render it
+          if (currentContact && currentContact.id === s.contactId) {
+            renderMessages();
+            scrollToBottom();
+          }
+          showToast(`Message sent to ${contact.name}`);
+        }
+        return false; // remove from queue
+      }
+      return true; // keep
+    });
+    if (fired) { saveData(); renderList(); }
+  }
+
+  // ─── INIT ─────────────────────────────────────────────────────────────────────
+  loadData();
+  renderList();
+  checkScheduledMessages(); // check immediately on load
+  setInterval(checkScheduledMessages, 30000); // then every 30 seconds
+</script>
+
+</body>
+</html>
